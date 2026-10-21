@@ -1,0 +1,367 @@
+{
+  "@@locale": "en",
+
+  "discover": "Discover",
+  "@discover": {
+    "description": "The title of the main feed screen"
+  },
+  
+  "searchHint": "Search requests, items, services...",
+  "@searchHint": {
+    "description": "Hint text shown inside the search bar"
+  },
+  
+  "activeRequests": "ACTIVE REQUESTS",
+  "@activeRequests": {
+    "description": "Header for the section showing ongoing user requests"
+  },
+  
+  "accepted": "Accepted",
+  "@accepted": {
+    "description": "Column title for requests the user has accepted"
+  },
+  
+  "posted": "Posted",
+  "@posted": {
+    "description": "Column title for requests the user has posted"
+  },
+  
+  "none": "None",
+  "@none": {
+    "description": "Text shown when a request column is empty"
+  },
+  
+  "recentActivity": "YOUR RECENT ACTIVITY",
+  "@recentActivity": {
+    "description": "Header for the user's personal activity feed"
+  },
+  
+  "communityActivity": "COMMUNITY ACTIVITY",
+  "@communityActivity": {
+    "description": "Header for the public community activity feed"
+  },
+  "goodMorning": "Good Morning",
+  "@goodMorning": {
+    "description": "Good morning greeting"
+  },
+  "goodAfternoon": "Good Afternoon",
+  "@goodAfternoon": {
+    "description": "Good afternoon greeting"
+  },
+  "goodEvening": "Good Evening",
+  "@goodEvening": {
+    "description": "Good evening greeting"
+  },
+  "navFeed": "Feed",
+  "@navFeed": {
+    "description": "Bottom navigation Feed label"
+  },
+  "navMap": "Map",
+  "@navMap": {
+    "description": "Bottom navigation Map label"
+  },
+  "navChat": "Chat",
+  "@navChat": {
+    "description": "Bottom navigation Chat label"
+  },
+  "navAccount": "Account",
+  "@navAccount": {
+    "description": "Bottom navigation Account label"
+  },
+  "profileTitle": "Profile",
+  "@profileTitle": {
+    "description": "Profile screen title"
+  },
+  "profileActivityHeader": "Activity & Reputation",
+  "@profileActivityHeader": {
+    "description": "Activity & Reputation section header"
+  },
+  "profilePreferencesHeader": "Preferences",
+  "@profilePreferencesHeader": {
+    "description": "Preferences section header"
+  },
+  "profileSupportHeader": "Support & Security",
+  "@profileSupportHeader": {
+    "description": "Support & Security section header"
+  },
+  "profileAuraPointsTile": "Aura & Circl Points",
+  "@profileAuraPointsTile": {
+    "description": "Aura & Circl Points settings tile"
+  },
+  "profilePostedRequestsTile": "My Posted Requests",
+  "@profilePostedRequestsTile": {
+    "description": "My Posted Requests settings tile"
+  },
+  "profileAcceptedRequestsTile": "Accepted Requests",
+  "@profileAcceptedRequestsTile": {
+    "description": "Accepted Requests settings tile"
+  },
+  "profileReviewsTile": "My Reviews",
+  "@profileReviewsTile": {
+    "description": "My Reviews settings tile"
+  },
+  "profileDarkModeTile": "Dark Mode",
+  "@profileDarkModeTile": {
+    "description": "Dark Mode settings tile"
+  },
+  "profileLanguageTile": "Language",
+  "@profileLanguageTile": {
+    "description": "Language settings tile"
+  },
+  "profileBiometricsTile": "Face ID / Biometrics",
+  "@profileBiometricsTile": {
+    "description": "Biometrics settings tile"
+  },
+  "profileBiometricsSubtitle": "Verify identity for payments",
+  "@profileBiometricsSubtitle": {
+    "description": "Biometrics settings tile subtitle"
+  },
+  "profileDisputeTile": "Dispute Center",
+  "@profileDisputeTile": {
+    "description": "Dispute Center settings tile"
+  },
+  "profileHelpFAQTile": "Help & FAQ",
+  "@profileHelpFAQTile": {
+    "description": "Help & FAQ settings tile"
+  },
+  "profilePrivacyTile": "Privacy Policy",
+  "@profilePrivacyTile": {
+    "description": "Privacy Policy settings tile"
+  },
+  "profileLogoutTile": "Logout",
+  "@profileLogoutTile": {
+    "description": "Logout settings tile"
+  },
+  "profileSelectLanguage": "Select Language",
+  "@profileSelectLanguage": {
+    "description": "Select Language picker title"
+  },
+  "profileEnglish": "English",
+  "@profileEnglish": {
+    "description": "English language label"
+  },
+  "profileSinhala": "සිංහල (Sinhala)",
+  "@profileSinhala": {
+    "description": "Sinhala language label"
+  },
+  "profileTamil": "தமிழ் (Tamil)",
+  "@profileTamil": {
+    "description": "Tamil language label"
+  },
+  "mapRequestsCount": "requests in this area",
+  "@mapRequestsCount": {
+    "description": "Label on map screen showing request count"
+  },
+  "mapViewButton": "View",
+  "@mapViewButton": {
+    "description": "View button label on map request sheet"
+  },
+  "mapChatButton": "Chat",
+  "@mapChatButton": {
+    "description": "Chat button label on map request sheet"
+  },
+  "chatsTitle": "Chats",
+  "@chatsTitle": {
+    "description": "Chats screen title"
+  },
+  "chatsSearchHint": "Search conversations...",
+  "@chatsSearchHint": {
+    "description": "Search hint in chats screen"
+  },
+  "chatsNoConversations": "No conversations yet",
+  "@chatsNoConversations": {
+    "description": "Empty state label on chats screen"
+  },
+  "filterAll": "All",
+  "@filterAll": {
+    "description": "Filter option All"
+  },
+  "filterUnread": "Unread",
+  "@filterUnread": {
+    "description": "Filter option Unread"
+  },
+  "filterActive": "Active",
+  "@filterActive": {
+    "description": "Filter option Active"
+  },
+  "filterCompleted": "Completed",
+  "@filterCompleted": {
+    "description": "Filter option Completed"
+  },
+  "feedFilterSortTitle": "FILTER & SORT",
+  "@feedFilterSortTitle": {
+    "description": "Feed filter sheet title"
+  },
+  "feedFilterMaxDistance": "Maximum Distance",
+  "@feedFilterMaxDistance": {
+    "description": "Feed filter distance header"
+  },
+  "feedFilterMinRating": "Minimum Rating",
+  "@feedFilterMinRating": {
+    "description": "Feed filter rating header"
+  },
+  "feedFilterSortByDate": "Sort By Date",
+  "@feedFilterSortByDate": {
+    "description": "Feed filter date sort header"
+  },
+  "feedFilterSortAlpha": "Sort Alphabetically",
+  "@feedFilterSortAlpha": {
+    "description": "Feed filter alphabetical sort header"
+  },
+  "feedFilterApply": "Apply & View Results",
+  "@feedFilterApply": {
+    "description": "Feed filter apply button label"
+  },
+  "feedFilterAny": "Any",
+  "@feedFilterAny": {
+    "description": "Feed filter Any rating option label"
+  },
+  "feedFilterNewest": "Newest to Oldest",
+  "@feedFilterNewest": {
+    "description": "Feed filter Sort option Newest to Oldest"
+  },
+  "feedFilterOldest": "Oldest to Newest",
+  "@feedFilterOldest": {
+    "description": "Feed filter Sort option Oldest to Newest"
+  },
+  "feedFilterAtoZ": "A to Z",
+  "@feedFilterAtoZ": {
+    "description": "Feed filter Sort option A to Z"
+  },
+  "feedFilterZtoA": "Z to A",
+  "@feedFilterZtoA": {
+    "description": "Feed filter Sort option Z to A"
+  },
+  "feedFilterNone": "None",
+  "@feedFilterNone": {
+    "description": "Feed filter Sort option None"
+  },
+  "postTitle": "Create Request",
+  "@postTitle": {
+    "description": "Create request screen title"
+  },
+  "postQuestion": "What do you need?",
+  "@postQuestion": {
+    "description": "Create request screen section question"
+  },
+  "postDetails": "Details",
+  "@postDetails": {
+    "description": "Create request details header"
+  },
+  "postDuration": "Expected Duration",
+  "@postDuration": {
+    "description": "Create request expected duration header"
+  },
+  "postBudget": "Maximum Budget",
+  "@postBudget": {
+    "description": "Create request maximum budget header"
+  },
+  "postDeposit": "Security Deposit Limit",
+  "@postDeposit": {
+    "description": "Create request security deposit limit header"
+  },
+  "postHowDone": "How do you need this done?",
+  "@postHowDone": {
+    "description": "Create request delivery format section header"
+  },
+  "postWhereDone": "Where do you need this?",
+  "@postWhereDone": {
+    "description": "Create request location section header"
+  },
+  "postCurrentLocation": "Current Location",
+  "@postCurrentLocation": {
+    "description": "Create request location type current location label"
+  },
+  "postSaveAddress": "Save Address",
+  "@postSaveAddress": {
+    "description": "Create request save address button label"
+  },
+  "postCancel": "Cancel",
+  "@postCancel": {
+    "description": "Create request cancel button label"
+  },
+  "postSavedLocations": "Saved Locations",
+  "@postSavedLocations": {
+    "description": "Create request saved locations label"
+  },
+  "postDetectLocation": "Tap to detect location",
+  "@postDetectLocation": {
+    "description": "Create request tap to detect location instruction"
+  },
+  "postEscrowTitle": "Payment Protection",
+  "@postEscrowTitle": {
+    "description": "Create request payment protection title"
+  },
+  "postEscrowDesc": "Payment held in escrow. Released only when you confirm completion.",
+  "@postEscrowDesc": {
+    "description": "Create request payment protection description"
+  },
+  "profileAccountHeader": "Account",
+  "@profileAccountHeader": {
+    "description": "Account section header"
+  },
+  "profileEditProfile": "Edit Profile",
+  "@profileEditProfile": {
+    "description": "Edit Profile tile label"
+  },
+  "profileIdentityVerification": "Identity Verification",
+  "@profileIdentityVerification": {
+    "description": "Identity Verification tile label"
+  },
+  "profileIdentityVerifiedToast": "Your identity is already verified.",
+  "@profileIdentityVerifiedToast": {
+    "description": "Toast message when identity is already verified"
+  },
+  "profileIdentityPendingToast": "Your verification is pending review.",
+  "@profileIdentityPendingToast": {
+    "description": "Toast message when identity verification is pending review"
+  },
+  "profileLocationAddress": "Location & Address",
+  "@profileLocationAddress": {
+    "description": "Location & Address tile label"
+  },
+  "profileWallet": "Wallet",
+  "@profileWallet": {
+    "description": "Wallet tile label"
+  },
+  "feedNearbyRequests": "Nearby Requests",
+  "@feedNearbyRequests": {
+    "description": "Header label for nearby requests"
+  },
+  "feedNoRequestsFound": "No Requests Found",
+  "@feedNoRequestsFound": {
+    "description": "Header label when no requests are found"
+  },
+  "postFieldTitle": "Title",
+  "@postFieldTitle": {
+    "description": "Label for request title input"
+  },
+  "postFieldTitleHint": "e.g., Need a pressure washer",
+  "@postFieldTitleHint": {
+    "description": "Hint text for request title input"
+  },
+  "postFieldDescription": "Description",
+  "@postFieldDescription": {
+    "description": "Label for request description input"
+  },
+  "postFieldDescHint": "Describe condition, requirements...",
+  "@postFieldDescHint": {
+    "description": "Hint text for request description input"
+  },
+  "postSearchRangeTitle": "How far are you searching?",
+  "@postSearchRangeTitle": {
+    "description": "Range picker section title"
+  },
+  "postReviewDetailsTitle": "Review Details",
+  "@postReviewDetailsTitle": {
+    "description": "Review request details header title"
+  },
+  "mapSearchNearby": "Search nearby...",
+  "@mapSearchNearby": {
+    "description": "Search input placeholder on map screen"
+  },
+  "mapNoRequestsAvailable": "No requests available",
+  "@mapNoRequestsAvailable": {
+    "description": "Placeholder on map screen search when empty"
+  }
+}

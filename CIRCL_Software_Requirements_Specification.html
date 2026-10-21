@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CIRCL - Software Requirements Specification (SRS)</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 20mm 18mm 20mm 18mm;
+            @bottom-right {
+                content: counter(page);
+            }
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            color: #1e293b;
+            line-height: 1.6;
+            font-size: 11pt;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        /* Cover Page */
+        .cover-page {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            page-break-after: always;
+            border-bottom: 3px solid #26a69a;
+            padding: 40px;
+        }
+
+        .cover-logo {
+            font-size: 56pt;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -2px;
+            margin-bottom: 0px;
+        }
+
+        .cover-logo span {
+            color: #26a69a;
+        }
+
+        .cover-subtitle {
+            font-size: 16pt;
+            color: #475569;
+            font-weight: 500;
+            margin-top: 10px;
+            margin-bottom: 40px;
+        }
+
+        .cover-doc-title {
+            font-size: 22pt;
+            font-weight: 700;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: #f1f5f9;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border-left: 6px solid #26a69a;
+            margin-bottom: 50px;
+        }
+
+        .cover-metadata {
+            margin-top: auto;
+            width: 100%;
+            max-width: 500px;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 20px;
+            text-align: left;
+            font-size: 10.5pt;
+        }
+
+        .cover-metadata table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cover-metadata td {
+            padding: 6px 12px;
+            border: none;
+        }
+
+        .cover-metadata td.label {
+            font-weight: bold;
+            color: #334155;
+            width: 40%;
+        }
+
+        /* Headings */
+        h1 {
+            font-size: 18pt;
+            color: #0f172a;
+            border-bottom: 2px solid #26a69a;
+            padding-bottom: 6px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            page-break-after: avoid;
+        }
+
+        .chapter-title {
+            page-break-before: always;
+        }
+
+        h2 {
+            font-size: 14pt;
+            color: #1e293b;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            page-break-after: avoid;
+            border-left: 4px solid #26a69a;
+            padding-left: 10px;
+        }
+
+        h3 {
+            font-size: 12pt;
+            color: #334155;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            page-break-after: avoid;
+        }
+
+        h4 {
+            font-size: 11pt;
+            color: #0f172a;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            page-break-after: avoid;
+        }
+
+        p, ul, ol {
+            margin-top: 0;
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+            margin-bottom: 20px;
+            font-size: 10pt;
+            page-break-inside: avoid;
+        }
+
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #1e293b;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        /* Callouts / Info Boxes */
+        .info-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #26a69a;
+            padding: 12px 16px;
+            margin: 15px 0;
+            border-radius: 0 6px 6px 0;
+            font-size: 10.5pt;
+        }
+
+        .code-block {
+            background-color: #0f172a;
+            color: #f8fafc;
+            padding: 14px;
+            border-radius: 6px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 9.5pt;
+            white-space: pre-wrap;
+            margin: 15px 0;
+            page-break-inside: avoid;
+        }
+
+        .req-id {
+            font-weight: bold;
+            color: #0f766e;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            page-break-after: always;
+        }
+
+        .toc h2 {
+            border-left: none;
+            padding-left: 0;
+            margin-top: 0;
+            text-align: center;
+            color: #0f172a;
+        }
+
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .toc li a {
+            color: #1e293b;
+            text-decoration: none;
+        }
+
+        .toc ul ul {
+            padding-left: 20px;
+            font-weight: normal;
+        }
+        
+        .diagram-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            page-break-inside: avoid;
+        }
+
+        .diagram-svg {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- COVER PAGE -->
+    <div class="cover-page">
+        <div class="cover-logo">circl<span>.</span></div>
+        <div class="cover-subtitle">Hyper-Local Resource Sharing & Microservices Ecosystem</div>
+        
+        <div class="cover-doc-title">Software Requirements Specification (SRS)</div>
+        
+        <div class="cover-metadata">
+            <table>
+                <tr>
+                    <td class="label">Project Title:</td>
+                    <td>CIRCL Mobile Platform</td>
+                </tr>
+                <tr>
+                    <td class="label">Document Version:</td>
+                    <td>1.0.0 (Final Baseline)</td>
+                </tr>
+                <tr>
+                    <td class="label">Date:</td>
+                    <td>July 15, 2026</td>
+                </tr>
+                <tr>
+                    <td class="label">Author / Organization:</td>
+                    <td>Software Engineering Team</td>
+                </tr>
+                <tr>
+                    <td class="label">Target Platform:</td>
+                    <td>iOS, Android & Web Admin</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li>1. Introduction
+                <ul>
+                    <li>1.1 Purpose</li>
+                    <li>1.2 Scope</li>
+                    <li>1.3 Definitions, Acronyms, and Abbreviations</li>
+                </ul>
+            </li>
+            <li>2. Overall Description
+                <ul>
+                    <li>2.1 Product Perspective</li>
+                    <li>2.2 Product Functions</li>
+                    <li>2.3 User Characteristics</li>
+                    <li>2.4 Assumptions and Dependencies</li>
+                </ul>
+            </li>
+            <li>3. External Interface Requirements
+                <ul>
+                    <li>3.1 User Interfaces</li>
+                    <li>3.2 Hardware Interfaces</li>
+                    <li>3.3 Software Interfaces</li>
+                </ul>
+            </li>
+            <li>4. Functional Requirements
+                <ul>
+                    <li>FR1: Authentication, Security & Identity Verification</li>
+                    <li>FR2: Listing, Request & Offer Management</li>
+                    <li>FR3: Geospatial Search & Interactive Mapping</li>
+                    <li>FR4: Real-Time Messaging & Chat System</li>
+                    <li>FR5: Escrow Payment & Financial Transactions</li>
+                    <li>FR6: Aura Reputation & Trust Economy</li>
+                    <li>FR7: Dispute Resolution & Escalation Center</li>
+                    <li>FR8: Platform Moderation & Admin Analytics</li>
+                </ul>
+            </li>
+            <li>5. Non-Functional Requirements
+                <ul>
+                    <li>5.1 Performance Requirements</li>
+                    <li>5.2 Security & Privacy Requirements</li>
+                    <li>5.3 Usability & Design Requirements</li>
+                    <li>5.4 Reliability, Availability & Maintainability</li>
+                </ul>
+            </li>
+            <li>6. System Requirements
+                <ul>
+                    <li>6.1 Hardware Requirements</li>
+                    <li>6.2 Software Requirements</li>
+                    <li>6.3 Tools & Technologies Stack</li>
+                </ul>
+            </li>
+            <li>7. Use Case Analysis & UML Diagrams
+                <ul>
+                    <li>7.1 System Use Case Diagram (UML)</li>
+                    <li>7.2 Detailed Use Case Specifications (UC1 - UC4)</li>
+                </ul>
+            </li>
+            <li>8. Constraints & Future Enhancements
+                <ul>
+                    <li>8.1 System Constraints</li>
+                    <li>8.2 Future Enhancements Roadmap</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 1. INTRODUCTION -->
+    <h1 class="chapter-title">1. Introduction</h1>
+    
+    <h2>1.1 Purpose</h2>
+    <p>The purpose of this Software Requirements Specification (SRS) document is to provide a complete, definitive, and detailed description of the operational requirements, behavioral logic, hardware/software interfaces, and systemic performance parameters of <strong>CIRCL</strong> (A Smart Community Platform for Resource Sharing and Microservices). This specification serves as the formal baseline for developers, system architects, test engineers, project managers, and quality assurance auditors.</p>
+
+    <h2>1.2 Scope</h2>
+    <p><strong>CIRCL</strong> is a cross-platform mobile application ecosystem designed to solve community hyper-isolation and material underutilization in suburban and urban settings. It creates a hyper-local dual-pillared marketplace that enables neighbors to share physical resources (goodwill borrowing and monetized tool/equipment rentals) and collaborative micro-services (volunteer favours and paid gig assignments).</p>
+
+    <div class="info-box">
+        <strong>Key Capabilities Covered by Scope:</strong> Automated National Identity Card (NIC) verification via Google ML Kit OCR and SHA-512 duplicate hashing; location-based radius discovery using Google Maps; offer & counter-proposal bargaining; PayHere mobile payment gateway with safety deposit holds; real-time WebSocket messaging; Aura Points gamification; and a web-enabled administrative dispute arbitration dashboard.
+    </div>
+
+    <h2>1.3 Definitions, Acronyms, and Abbreviations</h2>
+    <table>
+        <thead>
+            <tr>
+                <th style="width: 25%;">Term / Acronym</th>
+                <th style="width: 75%;">Definition & Context</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>SRS</strong></td>
+                <td>Software Requirements Specification document.</td>
+            </tr>
+            <tr>
+                <td><strong>CIRCL</strong></td>
+                <td>Smart Community Platform for Resource Sharing and Microservices.</td>
+            </tr>
+            <tr>
+                <td><strong>BaaS</strong></td>
+                <td>Backend-as-a-Service (Supabase platform supplying DB, Auth, Realtime, Storage).</td>
+            </tr>
+            <tr>
+                <td><strong>NIC</strong></td>
+                <td>National Identity Card (Government-issued photographic identity document).</td>
+            </tr>
+            <tr>
+                <td><strong>OCR</strong></td>
+                <td>Optical Character Recognition (Google ML Kit on-device string extraction engine).</td>
+            </tr>
+            <tr>
+                <td><strong>Aura Points</strong></td>
+                <td>Platform trust score awarded for verified transactions, positive ratings, and community identity verification.</td>
+            </tr>
+            <tr>
+                <td><strong>Escrow</strong></td>
+                <td>Financial structure temporarily holding security deposits during tool hire to guarantee return.</td>
+            </tr>
+            <tr>
+                <td><strong>RLS</strong></td>
+                <td>Row-Level Security (PostgreSQL data access control policies evaluated per user session).</td>
+            </tr>
+            <tr>
+                <td><strong>RPC</strong></td>
+                <td>Remote Procedure Call (Stored procedure functions in PostgreSQL database tier).</td>
+            </tr>
+            <tr>
+                <td><strong>PayHere</strong></td>
+                <td>Central Bank approved mobile payment gateway integrated for credit card processing in LKR.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 2. OVERALL DESCRIPTION -->
+    <h1 class="chapter-title">2. Overall Description</h1>
+
+    <h2>2.1 Product Perspective</h2>
+    <p>CIRCL is a <strong>new, standalone mobile and cloud software ecosystem</strong>. The client layer is built using Flutter for cross-platform iOS and Android execution. The server tier relies on Supabase BaaS providing PostgreSQL database management, realtime WebSocket notifications, file storage buckets, and identity authentication.</p>
+
+    <div class="code-block">
++-----------------------------------------------------------------------+
+|                         CIRCL MOBILE CLIENT                           |
+|                      (Flutter / Dart - iOS & Android)                 |
++---------------------+-------------------+-----------------------------+
+                      |                   |
+       REST / WebSockets                  | REST / Native Binding
+                      |                   v
+                      |          +-------------------------+
+                      |          | Google ML Kit (OCR)     |
+                      |          +-------------------------+
+                      |          | Google Maps Flutter API |
+                      |          +-------------------------+
+                      |          | PayHere Payment SDK     |
+                      |          +-------------------------+
+                      v
++-----------------------------------------------------------------------+
+|                           SUPABASE BACKEND                            |
+| +-------------------+  +-------------------+  +---------------------+ |
+| | PostgreSQL DB     |  | Auth (JWT/OAuth)  |  | Realtime WebSockets | |
+| | (RLS & RPCs)      |  | & Storage Bucket  |  | Subscription Hub    | |
+| +-------------------+  +-------------------+  +---------------------+ |
++-----------------------------------------------------------------------+
+    </div>
+
+    <h2>2.2 Product Functions</h2>
+    <p>The primary functionality of the system is partitioned into eight main modules:</p>
+    <ul>
+        <li><strong>User Auth & Security Module:</strong> Email/Password login, Google SSO, App Lock PIN/Biometrics, and ML Kit NIC document parsing.</li>
+        <li><strong>Listing & Marketplace Module:</strong> Creation and filtering of goodwill borrowing, monetized rentals, favours, and micro-gigs.</li>
+        <li><strong>Map & Geolocation Module:</strong> Pin location rendering, geodesic distance calculations, and distance radius filtering.</li>
+        <li><strong>Negotiation Engine:</strong> Offer submissions, counter-proposals, deposit agreements, and request locking.</li>
+        <li><strong>Real-Time Messaging System:</strong> Instant chat coordination, embedded negotiation cards, image sharing, and handover confirmations.</li>
+        <li><strong>Payment & Escrow Safety:</strong> PayHere card processing, pre-authorized safety deposit holds, 4% platform fee calculation, and deposit releases.</li>
+        <li><strong>Aura Trust Economy:</strong> Points calculation, levelling up (Bronze to Platinum), rating feedback, and deposit tier discounts.</li>
+        <li><strong>Admin Governance Dashboard:</strong> Financial transaction charts, dispute arbitration, OCR manual review queue, and moderation controls.</li>
+    </ul>
+
+    <h2>2.3 User Characteristics</h2>
+    <ul>
+        <li><strong>Community Borrower / Requester:</strong> Smartphone user seeking localized tools or favours. Requires simple UI flows and rapid local search.</li>
+        <li><strong>Community Lender / Provider:</strong> Resident seeking to monetize idle appliances or offer service skills. Requires transparent escrow protections.</li>
+        <li><strong>Platform Administrator:</strong> Staff handling operations, inspecting disputed cases, executing deposit refunds/forfeitures, and enforcing community safety rules.</li>
+    </ul>
+
+    <h2>2.4 Assumptions and Dependencies</h2>
+    <ul>
+        <li>Active cellular data or Wi-Fi network availability on mobile client hardware.</li>
+        <li>Integrated operational GPS receiver and camera hardware on client mobile devices.</li>
+        <li>Continuous operational availability of Supabase Cloud services, Google Maps APIs, and PayHere gateway servers.</li>
+    </ul>
+
+    <!-- 3. EXTERNAL INTERFACE REQUIREMENTS -->
+    <h1 class="chapter-title">3. External Interface Requirements</h1>
+
+    <h2>3.1 User Interfaces</h2>
+    <p>The CIRCL user interface is designed using Flutter with modern dark-mode glassmorphism design tokens (#26A69A Teal, #1E293B Card Slate, #070913 Background). Key interfaces include:</p>
+    <ul>
+        <li><strong>Splash & Onboarding Screen:</strong> Interactive app overview carousel with page indicators.</li>
+        <li><strong>Auth & Lock Screens:</strong> Tabs for login/signup, OAuth buttons, PIN entry keypads, and native biometric prompts.</li>
+        <li><strong>Home Feed & Map View:</strong> Responsive listing grids with category pills and an embedded Google Maps view displaying custom pin markers.</li>
+        <li><strong>Post Creation Form:</strong> Step-by-step wizard for listing details, goodwill vs. monetized rate selector, and photo attachments.</li>
+        <li><strong>Real-time Chat Screen:</strong> Timeline interface showing message bubbles, embedded interactive offer cards, photo sharing buttons, and transaction status banners.</li>
+        <li><strong>Payment Checkout UI:</strong> Wallet summary, itemized fee breakdown, and PayHere native webview checkout bridge.</li>
+        <li><strong>Admin Dispute Dashboard:</strong> Data analytics summary, tabbed dispute resolution table, manual NIC review list, and moderation buttons.</li>
+    </ul>
+
+    <h2>3.2 Hardware Interfaces</h2>
+    <ul>
+        <li><strong>Camera Sensor:</strong> Used by camera plugins to capture photographic images of identity cards and listing items.</li>
+        <li><strong>Biometric Scanner:</strong> TouchID / FaceID hardware sensors bound via native local authentication libraries.</li>
+        <li><strong>GPS Receiver:</strong> Hardware location provider yielding precise latitude/longitude positioning data.</li>
+    </ul>
+
+    <h2>3.3 Software Interfaces</h2>
+    <ul>
+        <li><strong>Supabase API:</strong> HTTPS REST & WSS protocol endpoints for database transactions, storage buckets, and realtime subscriptions.</li>
+        <li><strong>Google Maps API:</strong> Native Android/iOS mapping render engine for visual geographic discovery.</li>
+        <li><strong>PayHere Mobile SDK:</strong> Encrypted payment gateway integration for processing credit/debit card authorizations.</li>
+        <li><strong>Google ML Kit Text Recognition:</strong> On-device native SDK parsing text strings from image buffers.</li>
+    </ul>
+
+    <!-- 4. FUNCTIONAL REQUIREMENTS -->
+    <h1 class="chapter-title">4. Functional Requirements</h1>
+
+    <h2>FR1: Authentication, Registration & Access Control</h2>
+    <ul>
+        <li><span class="req-id">FR1.1: Email Registration & OTP Verification:</span> The system shall allow users to register with an email and password, requiring account activation via a 4-digit OTP.</li>
+        <li><span class="req-id">FR1.2: Google OAuth Authentication:</span> The system shall allow users to sign up and log in via Google OAuth, automatically creating a profile if one does not exist.</li>
+        <li><span class="req-id">FR1.3: Credential Complexity & Uniqueness:</span> The system shall enforce password complexity rules (8–15 characters, mixed case, numbers, symbols) and validate username uniqueness in real time.</li>
+        <li><span class="req-id">FR1.4: Mandatory Terms & Safety Acknowledgement:</span> The system shall require users to accept the Terms of Conditions and Safety Guidelines before completing registration.</li>
+        <li><span class="req-id">FR1.5: Login & Session Persistence:</span> The system shall authenticate users via email/password and provide a "Remember Me" toggle for session persistence.</li>
+        <li><span class="req-id">FR1.6: Biometric Authentication Setup:</span> The system shall allow users to enable Face ID or device biometrics to authorize secure actions like payments.</li>
+        <li><span class="req-id">FR1.7: Password Recovery:</span> The system shall allow users to reset forgotten passwords via a secure email recovery link.</li>
+        <li><span class="req-id">FR1.8: Role-Based Routing:</span> The system shall check user roles upon login, routing administrative users to the Admin Dashboard and regular users to the Feed Screen.</li>
+        <li><span class="req-id">FR1.9: Secure Logout:</span> The system shall allow users to securely log out and clear locally stored authentication tokens.</li>
+    </ul>
+
+    <h2>FR2: User Profiles, Gamification & Verification</h2>
+    <ul>
+        <li><span class="req-id">FR2.1: Automatic Profile Provisioning:</span> The system shall create a default profile upon registration, initializing username, location, avatar, Circl Points (0), and Aura Level (Bronze).</li>
+        <li><span class="req-id">FR2.2: Profile Management:</span> The system shall allow users to update display names, locations, contact info, and inventory lists.</li>
+        <li><span class="req-id">FR2.3: Onboarding & Profile NIC Verification:</span> The system shall prompt first-time users with a National Identity Card (NIC) verification step via secure hashing, allowing them to skip it during onboarding and complete it later in their profile settings.</li>
+        <li><span class="req-id">FR2.4: Verification Badge Display:</span> The system shall display a verification badge on profiles and request cards for NIC-verified users.</li>
+        <li><span class="req-id">FR2.5: Circl Points Award System:</span> The system shall automatically award Circl Points to users upon completing transactions.</li>
+        <li><span class="req-id">FR2.6: Aura Level Progression & Display:</span> The system shall automatically upgrade a user's Aura Level (Bronze, Silver, Gold, Diamond) as their Circl Points reach defined mathematical thresholds, and visually display this tier on their avatar.</li>
+    </ul>
+
+    <h2>FR3: Resource Request Creation & Discovery</h2>
+    <ul>
+        <li><span class="req-id">FR3.1: Multi-Type Request Creation:</span> The system shall allow users to create four request types: Free Borrow, Paid Rent, Free Favour, and Paid Task.</li>
+        <li><span class="req-id">FR3.2: Guided Creation Workflow:</span> The system shall guide users through a multi-step request creation process covering task details, location preferences, and a final review.</li>
+        <li><span class="req-id">FR3.3: Dynamic Financial & Duration Inputs:</span> The system shall dynamically display input fields for expected duration, budget limits, and security deposits based on the selected request type.</li>
+        <li><span class="req-id">FR3.4: Location Preferences & GPS Detection:</span> The system shall allow users to specify execution preferences (In-Person, Flexible, or Remote) and auto-detect coordinates using device GPS.</li>
+        <li><span class="req-id">FR3.5: Address Autocomplete & Saved Locations:</span> The system shall provide real-time address autocomplete suggestions and allow users to save frequently used locations.</li>
+        <li><span class="req-id">FR3.6: Request Lifecycle & Expiration:</span> The system shall allow users to edit or cancel open requests, automatically expiring unaccepted requests after 7 days.</li>
+        <li><span class="req-id">FR3.7: Feed & Dynamic Filtering:</span> The system shall display open requests in a scrollable feed with real-time filters for type, distance, and price.</li>
+        <li><span class="req-id">FR3.8: Keyword Search Engine:</span> The system shall provide a search bar to query open requests by matching keywords in titles and descriptions.</li>
+        <li><span class="req-id">FR3.9: Interactive Map Display:</span> The system shall display an interactive map with colour-coded markers representing different request types.</li>
+        <li><span class="req-id">FR3.10: Intelligent Matching Algorithm:</span> The system shall rank requests using a compatibility score based on spatial proximity, user ratings, and Circl Points, highlighting the best match.</li>
+    </ul>
+
+    <h2>FR4: Transactions, Negotiation & Escrow</h2>
+    <ul>
+        <li><span class="req-id">FR4.1: Request Acceptance & Transaction Setup:</span> The system shall allow users to accept open requests, changing status to "In Progress" and creating a transaction record.</li>
+        <li><span class="req-id">FR4.2: Payment Gateway Integration:</span> The system shall integrate a payment gateway to facilitate secure payments, including simulated escrow holds for Rent and Paid Task requests.</li>
+        <li><span class="req-id">FR4.3: Mutual Transaction Completion:</span> The system shall require both transaction parties to independently confirm completion before finalizing the exchange and releasing escrowed funds.</li>
+        <li><span class="req-id">FR4.4: Dispute Management:</span> The system shall allow users to flag transactions for dispute, freezing simulated deposits, ratings, and points until an administrator resolves it via the Admin Dashboard.</li>
+    </ul>
+
+    <h2>FR5: Real-Time Communication</h2>
+    <ul>
+        <li><span class="req-id">FR5.1: Chat Hub Management:</span> The system shall provide a centralized chat inbox allowing users to search, filter (Unread, Active, Completed), and sort conversations.</li>
+        <li><span class="req-id">FR5.2: Real-Time Peer-to-Peer Chat:</span> The system shall open a private, real-time messaging channel between users during negotiation and active transaction phases.</li>
+        <li><span class="req-id">FR5.3: Rich Media Attachments:</span> The system shall allow users to securely transmit images and documents (PDF/Word) within the chat interface.</li>
+        <li><span class="req-id">FR5.4: Automated System Messaging:</span> The system shall automatically inject contextual system events into the chat feed (e.g., "Payment completed", "Terms accepted", "Cancellation requested").</li>
+        <li><span class="req-id">FR5.5: In-App Notification Engine:</span> The system shall send real-time in-app notifications for incoming messages, request acceptances, and transaction status updates.</li>
+    </ul>
+
+    <h2>FR6: Ratings, Community & Moderation</h2>
+    <ul>
+        <li><span class="req-id">FR6.1: Post-Transaction Ratings & Reviews:</span> The system shall prompt both parties to submit a 1-to-5 star rating and optional text review upon transaction completion.</li>
+        <li><span class="req-id">FR6.2: Automated Rating Aggregation:</span> The system shall automatically recalculate and update user average ratings and review counts upon new submissions.</li>
+        <li><span class="req-id">FR6.3: User Moderation & Reporting:</span> The system shall allow users to report other profiles for spam, harassment, or suspicious activity.</li>
+    </ul>
+
+    <h2>FR7: System Preferences & Ecosystem</h2>
+    <ul>
+        <li><span class="req-id">FR7.1: Multi-Language Support:</span> The system shall support real-time dynamic language switching between Tamil, Sinhala, and English.</li>
+        <li><span class="req-id">FR7.2: Theme Adaptability:</span> The system shall support Light and Dark themes, adapting dynamically to device settings.</li>
+        <li><span class="req-id">FR7.3: Companion Web Portal Integration:</span> The system shall provide a companion website displaying app features, platform info, and Android APK downloads.</li>
+    </ul>
+
+    <!-- 5. NON-FUNCTIONAL REQUIREMENTS -->
+    <h1 class="chapter-title">5. Non-Functional Requirements</h1>
+
+    <h2>5.1 Performance Requirements</h2>
+    <ul>
+        <li><strong>Response Time:</strong> Database query response times and REST requests shall execute within 2.0 seconds over standard 4G connections.</li>
+        <li><strong>Chat Latency:</strong> Messages delivered over Supabase Realtime WebSockets shall display on recipient screens within 500 ms.</li>
+        <li><strong>Frame Rate:</strong> Map interface rendering shall maintain 60 FPS performance when displaying up to 100 pin markers simultaneously.</li>
+    </ul>
+
+    <h2>5.2 Security & Privacy Requirements</h2>
+    <ul>
+        <li><strong>Encryption in Transit:</strong> All web traffic shall be encrypted using TLS 1.3 protocol standards over HTTPS and WSS connections.</li>
+        <li><strong>Data Access Rules:</strong> PostgreSQL table access shall be guarded by Row-Level Security (RLS) policies based on authenticated user IDs.</li>
+        <li><strong>Identity Protection:</strong> NIC numbers shall be stored strictly as salted SHA-512 hashes; plain text identity numbers shall never be written to permanent storage.</li>
+        <li><strong>Keystore Security:</strong> Auth tokens and app lock credentials shall be stored in native device hardware keychains via <code>flutter_secure_storage</code>.</li>
+    </ul>
+
+    <h2>5.3 Usability Requirements</h2>
+    <ul>
+        <li><strong>Design System:</strong> UI components shall adhere to dark theme glassmorphic styling utilizing clean typography and clear contrast ratios.</li>
+        <li><strong>Interaction Efficiency:</strong> Core tasks (creating a request, accepting an offer, entering chat) shall require no more than 3 user taps from the primary feed screen.</li>
+        <li><strong>Localization Readiness:</strong> App text strings shall be organized inside localizable translation bundles (`l10n.yaml`).</li>
+    </ul>
+
+    <h2>5.4 Reliability & Availability</h2>
+    <ul>
+        <li><strong>System Availability:</strong> The backend server database environment shall maintain 99.9% uptime.</li>
+        <li><strong>Fault Recovery:</strong> Mobile clients shall gracefully handle internet drops by queueing unsent messages locally until connection restoration.</li>
+    </ul>
+
+    <!-- 6. SYSTEM REQUIREMENTS -->
+    <h1 class="chapter-title">6. System Requirements</h1>
+
+    <h2>6.1 Hardware Requirements</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Component</th>
+                <th>Minimum Specifications</th>
+                <th>Recommended Specifications</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Mobile Processor</strong></td>
+                <td>Quad-Core 1.8 GHz ARM64</td>
+                <td>Octa-Core 2.4 GHz ARM64</td>
+            </tr>
+            <tr>
+                <td><strong>Mobile RAM</strong></td>
+                <td>3 GB RAM</td>
+                <td>4 GB RAM or higher</td>
+            </tr>
+            <tr>
+                <td><strong>Storage</strong></td>
+                <td>150 MB free space</td>
+                <td>500 MB free space</td>
+            </tr>
+            <tr>
+                <td><strong>Camera & Location</strong></td>
+                <td>5 MP Rear Camera, GPS Receiver</td>
+                <td>12 MP Camera, High-Precision GNSS</td>
+            </tr>
+            <tr>
+                <td><strong>Cloud Server Instance</strong></td>
+                <td>Multi-core virtualized DB instance</td>
+                <td>Managed Supabase Pro Instance (4GB+ RAM)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>6.2 Software Requirements</h2>
+    <ul>
+        <li><strong>Mobile OS:</strong> Android 8.0 (API Level 26) or higher / iOS 13.0 or higher.</li>
+        <li><strong>Admin Platform:</strong> Windows 10/11, macOS, or Linux running modern web browsers (Chrome, Edge, Firefox).</li>
+        <li><strong>Database Engine:</strong> Managed PostgreSQL 15 with PostGIS extensions.</li>
+    </ul>
+
+    <h2>6.3 Tools & Technologies Stack</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Layer</th>
+                <th>Technology / Package</th>
+                <th>Version & Role</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Frontend Framework</strong></td>
+                <td>Flutter / Dart SDK</td>
+                <td>^3.11.0 (Cross-platform client framework)</td>
+            </tr>
+            <tr>
+                <td><strong>Backend Platform</strong></td>
+                <td>Supabase Cloud</td>
+                <td>PostgreSQL 15, Auth, Storage, WebSockets</td>
+            </tr>
+            <tr>
+                <td><strong>Payment Gateway</strong></td>
+                <td>PayHere Mobile SDK</td>
+                <td>^3.2.3 (LKR credit card checkout & escrow)</td>
+            </tr>
+            <tr>
+                <td><strong>Map Services</strong></td>
+                <td>Google Maps Flutter & Geolocator</td>
+                <td>`google_maps_flutter` ^2.11.0, `geolocator` ^14.0.3</td>
+            </tr>
+            <tr>
+                <td><strong>OCR Scanner Engine</strong></td>
+                <td>Google ML Kit Text Recognition</td>
+                <td>`google_mlkit_text_recognition` ^0.15.1</td>
+            </tr>
+            <tr>
+                <td><strong>Local Auth Security</strong></td>
+                <td>Flutter Secure Storage & Local Auth</td>
+                <td>`flutter_secure_storage` ^10.3.1, `local_auth` ^3.0.1</td>
+            </tr>
+            <tr>
+                <td><strong>Cryptography</strong></td>
+                <td>Crypto Package</td>
+                <td>^3.0.3 (SHA-512 identity hashing)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 7. USE CASE ANALYSIS & UML DIAGRAMS -->
+    <h1 class="chapter-title">7. Use Case Analysis & UML Diagrams</h1>
+
+    <h2>7.1 System Use Case Diagram (UML)</h2>
+    <div class="diagram-container">
+        <svg class="diagram-svg" viewBox="0 0 750 480" xmlns="http://www.w3.org/2000/svg">
+            <!-- Actors -->
+            <g transform="translate(40, 140)">
+                <circle cx="20" cy="15" r="12" fill="none" stroke="#0f172a" stroke-width="2"/>
+                <line x1="20" y1="27" x2="20" y2="55" stroke="#0f172a" stroke-width="2"/>
+                <line x1="0" y1="38" x2="40" y2="38" stroke="#0f172a" stroke-width="2"/>
+                <line x1="20" y1="55" x2="5" y2="85" stroke="#0f172a" stroke-width="2"/>
+                <line x1="20" y1="55" x2="35" y2="85" stroke="#0f172a" stroke-width="2"/>
+                <text x="20" y="105" text-anchor="middle" font-weight="bold" font-size="11" fill="#0f172a">Community User</text>
+            </g>
+
+            <g transform="translate(40, 320)">
+                <circle cx="20" cy="15" r="12" fill="none" stroke="#0f172a" stroke-width="2"/>
+                <line x1="20" y1="27" x2="20" y2="55" stroke="#0f172a" stroke-width="2"/>
+                <line x1="0" y1="38" x2="40" y2="38" stroke="#0f172a" stroke-width="2"/>
+                <line x1="20" y1="55" x2="5" y2="85" stroke="#0f172a" stroke-width="2"/>
+                <line x1="20" y1="55" x2="35" y2="85" stroke="#0f172a" stroke-width="2"/>
+                <text x="20" y="105" text-anchor="middle" font-weight="bold" font-size="11" fill="#0f172a">Platform Admin</text>
+            </g>
+
+            <!-- System Boundary -->
+            <rect x="140" y="20" width="460" height="440" rx="10" fill="#f8fafc" stroke="#26a69a" stroke-width="2"/>
+            <text x="370" y="42" text-anchor="middle" font-weight="bold" font-size="14" fill="#0f172a">CIRCL Platform System Boundary</text>
+
+            <!-- Use Cases inside boundary -->
+            <g transform="translate(160, 60)">
+                <ellipse cx="120" cy="20" rx="105" ry="18" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+                <text x="120" y="24" text-anchor="middle" font-size="10" fill="#0f172a">UC1: Register & Authenticate</text>
+
+                <ellipse cx="120" cy="65" rx="105" ry="18" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+                <text x="120" y="69" text-anchor="middle" font-size="10" fill="#0f172a">UC2: Automated NIC OCR Scan</text>
+
+                <ellipse cx="120" cy="110" rx="105" ry="18" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+                <text x="120" y="114" text-anchor="middle" font-size="10" fill="#0f172a">UC3: Create Request / Listing</text>
+
+                <ellipse cx="120" cy="155" rx="105" ry="18" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+                <text x="120" y="159" text-anchor="middle" font-size="10" fill="#0f172a">UC4: Explore Feed & Map Pins</text>
+
+                <ellipse cx="120" cy="200" rx="105" ry="18" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+                <text x="120" y="204" text-anchor="middle" font-size="10" fill="#0f172a">UC5: Negotiate & Accept Offer</text>
+
+                <ellipse cx="120" cy="245" rx="105" ry="18" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+                <text x="120" y="249" text-anchor="middle" font-size="10" fill="#0f172a">UC6: PayHere Checkout & Escrow</text>
+
+                <ellipse cx="120" cy="290" rx="105" ry="18" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+                <text x="120" y="294" text-anchor="middle" font-size="10" fill="#0f172a">UC7: Chat & Handover Confirmation</text>
+
+                <ellipse cx="120" cy="335" rx="105" ry="18" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+                <text x="120" y="339" text-anchor="middle" font-size="10" fill="#0f172a">UC8: Submit Dispute Case</text>
+
+                <ellipse cx="120" cy="380" rx="105" ry="18" fill="#ffffff" stroke="#334155" stroke-width="1.5"/>
+                <text x="120" y="384" text-anchor="middle" font-size="10" fill="#0f172a">UC9: Arbitrate Escrow Dispute</text>
+            </g>
+
+            <!-- External Secondary Actors -->
+            <g transform="translate(620, 110)">
+                <rect x="0" y="0" width="100" height="40" rx="5" fill="#e2e8f0" stroke="#334155" stroke-width="1.5"/>
+                <text x="50" y="24" text-anchor="middle" font-weight="bold" font-size="10" fill="#0f172a">Google ML Kit</text>
+            </g>
+
+            <g transform="translate(620, 290)">
+                <rect x="0" y="0" width="100" height="40" rx="5" fill="#e2e8f0" stroke="#334155" stroke-width="1.5"/>
+                <text x="50" y="24" text-anchor="middle" font-weight="bold" font-size="10" fill="#0f172a">PayHere SDK</text>
+            </g>
+
+            <!-- Relationship Lines -->
+            <line x1="75" y1="180" x2="160" y2="80" stroke="#475569" stroke-width="1.2"/>
+            <line x1="75" y1="180" x2="160" y2="125" stroke="#475569" stroke-width="1.2"/>
+            <line x1="75" y1="180" x2="160" y2="170" stroke="#475569" stroke-width="1.2"/>
+            <line x1="75" y1="180" x2="160" y2="215" stroke="#475569" stroke-width="1.2"/>
+            <line x1="75" y1="180" x2="160" y2="260" stroke="#475569" stroke-width="1.2"/>
+            <line x1="75" y1="180" x2="160" y2="305" stroke="#475569" stroke-width="1.2"/>
+            <line x1="75" y1="180" x2="160" y2="350" stroke="#475569" stroke-width="1.2"/>
+            <line x1="75" y1="180" x2="160" y2="395" stroke="#475569" stroke-width="1.2"/>
+
+            <line x1="75" y1="360" x2="160" y2="440" stroke="#475569" stroke-width="1.2"/>
+
+            <line x1="385" y1="125" x2="620" y2="130" stroke="#475569" stroke-width="1.2" stroke-dasharray="4,4"/>
+            <line x1="385" y1="305" x2="620" y2="310" stroke="#475569" stroke-width="1.2" stroke-dasharray="4,4"/>
+        </svg>
+    </div>
+
+    <h2>7.2 Detailed Use Case Specifications</h2>
+
+    <h3>UC1: Create Resource Request or Listing</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td style="width: 25%; font-weight: bold;">Use Case ID & Name</td>
+                <td><strong>UC1:</strong> Create Resource Request or Listing</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Primary Actor</td>
+                <td>Community User (Requester / Lender)</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Preconditions</td>
+                <td>User must be registered, authenticated, and logged into an active account session.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Trigger</td>
+                <td>User taps the floating action button (+) on the main home screen.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Main Flow</td>
+                <td>
+                    1. User selects classification: Physical Resource (Borrow/Rent) or Service (Favour/Gig).<br>
+                    2. User fills in title, detailed description, category, and target location.<br>
+                    3. User specifies pricing mode (Free Goodwill vs. Rental Rate & Escrow Deposit).<br>
+                    4. User uploads item photographs via camera or gallery picker.<br>
+                    5. User taps "Publish Listing".<br>
+                    6. System validates inputs, uploads photos to Supabase Storage, and inserts a row into `requests` table with `status = 'open'`.<br>
+                    7. System renders success confirmation and renders post on feed and map.
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Alternative Flows</td>
+                <td>
+                    <em>4a. Missing Fields:</em> System displays inline red validation text highlighting missing inputs.<br>
+                    <em>6a. Storage Failure:</em> System alerts user of network failure and allows immediate retry.
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Postconditions</td>
+                <td>Listing becomes searchable and visible on nearby user feeds and map pins.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>UC2: Accept Request & Complete Escrow Transaction</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td style="width: 25%; font-weight: bold;">Use Case ID & Name</td>
+                <td><strong>UC2:</strong> Accept Request and Escrow Payment Settlement</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Primary Actor</td>
+                <td>Community Provider / Borrower</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Secondary Actor</td>
+                <td>PayHere Payment Gateway SDK</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Preconditions</td>
+                <td>User is logged in, NIC verified, and viewing an open listing posted by another resident.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Trigger</td>
+                <td>User taps "Accept / Propose Offer" button on listing view.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Main Flow</td>
+                <td>
+                    1. User inputs proposed rate and deposit, sending an offer.<br>
+                    2. Requester reviews offer in real-time chat and taps "Accept Offer".<br>
+                    3. System inserts transaction row and locks request status to `negotiating`.<br>
+                    4. Borrower proceeds to wallet checkout screen.<br>
+                    5. System calculates total payable (Rate + Safety Deposit Hold + 4% Platform Fee).<br>
+                    6. System invokes PayHere SDK checkout dialog for card details.<br>
+                    7. PayHere confirms card authorization.<br>
+                    8. System logs payment event, holds deposit in escrow table, and updates transaction to `in_progress`.
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Alternative Flows</td>
+                <td>
+                    <em>7a. Card Declined:</em> PayHere returns authorization error. System retains `negotiating` lock state and prompts user to re-attempt with another payment card.
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Postconditions</td>
+                <td>Deposit is safely held in escrow, transaction transitions to active execution, and handover timeline renders in chat.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>UC3: Verify Identity via Automated NIC OCR</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td style="width: 25%; font-weight: bold;">Use Case ID & Name</td>
+                <td><strong>UC3:</strong> Automated NIC OCR Document Verification</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Primary Actor</td>
+                <td>Community User</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Secondary Actor</td>
+                <td>Google ML Kit Text Recognition Engine</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Preconditions</td>
+                <td>User navigates to Identity Verification screen.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Trigger</td>
+                <td>User selects "Scan National Identity Card".</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Main Flow</td>
+                <td>
+                    1. User positions document within camera scanning box.<br>
+                    2. Scanner captures high-resolution photo buffer.<br>
+                    3. App passes buffer to Google ML Kit OCR engine.<br>
+                    4. System parses document text to extract identity card string.<br>
+                    5. System calculates salted SHA-512 digest hash of the NIC number.<br>
+                    6. System calls `check_duplicate_nic` database function.<br>
+                    7. System confirms unique identity, logs verification record, and marks profile as `verified`.
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Alternative Flows</td>
+                <td>
+                    <em>6a. Duplicate Hash:</em> System halts verification and alerts user that NIC is already registered to another user.<br>
+                    <em>4a. Blurred Image:</em> System prompts user to retake scan or queue for manual admin review.
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Postconditions</td>
+                <td>User receives verified profile badge, enabling high-deposit monetized transactions.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>UC4: Arbitrate Transaction Dispute (Admin)</h3>
+    <table>
+        <tbody>
+            <tr>
+                <td style="width: 25%; font-weight: bold;">Use Case ID & Name</td>
+                <td><strong>UC4:</strong> Arbitrate Transaction Dispute & Escrow</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Primary Actor</td>
+                <td>Platform Admin / Moderator</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Preconditions</td>
+                <td>Disputed transaction case logged with status `disputed` by a transacting party.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Trigger</td>
+                <td>Admin selects dispute record on Admin Dashboard panel.</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Main Flow</td>
+                <td>
+                    1. Admin reviews dispute details, uploaded evidence photos, and chat conversation log.<br>
+                    2. Admin selects verdict: Refund Deposit to Borrower OR Forfeit Deposit to Lender.<br>
+                    3. Admin clicks "Execute Dispute Verdict".<br>
+                    4. System invokes ledger RPC stored procedures to settle funds.<br>
+                    5. System dispatches payout to designated party minus platform commission.<br>
+                    6. System updates transaction status to `resolved` and notifies both users.
+                </td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">Postconditions</td>
+                <td>Escrow ledger is balanced and closed, dispute is marked resolved, and funds are disbursed.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 8. CONSTRAINTS & FUTURE ENHANCEMENTS -->
+    <h1 class="chapter-title">8. Constraints & Future Enhancements</h1>
+
+    <h2>8.1 System Constraints</h2>
+    <ul>
+        <li><strong>External API Services:</strong> Operational system continuity depends on third-party uptime (Google Maps, Supabase, and PayHere APIs).</li>
+        <li><strong>Network Dependency:</strong> Application logic requires continuous cellular data or Wi-Fi connectivity for financial escrow and chat syncing.</li>
+        <li><strong>Regulatory Compliance:</strong> Online payment settlement logic strictly adheres to Central Bank monetary rules executed via PayHere gateway protocols.</li>
+    </ul>
+
+    <h2>8.2 Future Enhancements Roadmap</h2>
+    <ul>
+        <li><strong>Smart Contract Proof of Return:</strong> Integration of immutable ledger checkpoints for recording item check-in and check-out physical conditions.</li>
+        <li><strong>AI Fair Price Recommender:</strong> Machine learning pricing algorithm suggesting fair daily rental rates based on neighborhood market data.</li>
+        <li><strong>Private Community Circles:</strong> Hyper-local gated sub-communities for universities, housing complexes, and corporate campuses.</li>
+        <li><strong>Integrated Courier Dispatch:</strong> On-demand local delivery API integration to transport heavy equipment directly between users.</li>
+    </ul>
+
+</body>
+</html>
