@@ -26,6 +26,12 @@
 
 ---
 
+## Screenshots
+
+![Circl App Screens](ss/screens.png)
+
+---
+
 ## Database Architecture
 
 The backend runs on Supabase (PostgreSQL 15+) with strict Row-Level Security (RLS) policies protecting all records:
