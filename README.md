@@ -16,7 +16,7 @@
 - **Interactive Map Discovery:** Browse and locate nearby item requests, equipment rentals, and community tasks with real-time radius filtering via Google Maps.
 - **Multi-Tier Resource Sharing:** Supports free household item borrowing, paid equipment rentals with duration calculators, and community micro-tasks.
 - **On-Device OCR NIC Scanning:** Fast, automated Sri Lankan National Identity Card text extraction powered by Google ML Kit.
-- **Salted SHA-512 Privacy Hashing:** Identity numbers are never stored in plaintext—only non-reversible cryptographic hashes prevent duplicate accounts.
+- **Salted SHA-512 Privacy Hashing:** Identity numbers are never stored in plaintext; only non-reversible cryptographic hashes prevent duplicate accounts.
 - **PayHere Escrow Protection:** Pre-authorizes and securely holds borrower funds (rental fee, deposit, 5% platform fee) until items are safely returned.
 - **In-App Wallet & Double-Entry Ledger:** Automated instant deposit refunds and provider earnings tracking with atomic balance synchronization.
 - **Real-Time Chat & Milestone Tracking:** Live messaging via Supabase Realtime channels with status updates from negotiation to return.
