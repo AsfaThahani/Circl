@@ -1,4 +1,4 @@
-# Circl | Hyper-Local Community Sharing & Peer-to-Peer Microservices
+# Circl | Community Sharing & Peer-to-Peer Microservices
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.11+-02569B?logo=flutter&logoColor=white)](https://flutter.dev/)
 [![Dart](https://img.shields.io/badge/Dart-3.0+-0175C2?logo=dart&logoColor=white)](https://dart.dev/)
@@ -6,79 +6,22 @@
 [![PayHere](https://img.shields.io/badge/PayHere-Escrow%20%26%20Payments-FF5722)](https://www.payhere.lk/)
 [![Security](https://img.shields.io/badge/Security-Row%20Level%20Security%20(RLS)-blue)](https://supabase.com/docs/guides/auth/row-level-security)
 
-**Circl** is a hyper-local Flutter mobile application built for Sri Lanka to power peer-to-peer resource sharing, tool borrowing, community micro-tasks, and neighbor-to-neighbor services. Designed to foster collaborative consumption and trust within neighborhoods, Circl replaces informal borrowing and manual tracking with escrow payments, biometric security, on-device OCR identity verification, and interactive map discovery.
-
----
-
-## Architecture & System Design
-
-```mermaid
-flowchart TD
-    subgraph Client ["Flutter Mobile Client"]
-        UI["Glassmorphic UI / SNPro & Ogelo Fonts"]
-        State["Provider State Management"]
-        ML["Google ML Kit (NIC OCR Scanning)"]
-        SecStore["Flutter Secure Storage / LocalAuth"]
-    end
-
-    subgraph Backend ["Supabase Backend-as-a-Service (PostgreSQL 15+)"]
-        Auth["Supabase GoTrue Auth"]
-        DB[("PostgreSQL Database (13 Relational Tables)")]
-        RLS["Strict Row-Level Security (RLS)"]
-        RPC["PL/pgSQL Functions (update_wallet, check_duplicate_nic)"]
-        Realtime["PostgreSQL CDC / Real-Time WebSocket Channels"]
-        Storage["Supabase Storage (avatars, temp_nic)"]
-    end
-
-    subgraph Gateways ["External Integrations"]
-        PayHere["PayHere Payment Gateway (Escrow Pre-Authorization)"]
-        Maps["Google Maps SDK & OpenStreetMap Geocoding"]
-    end
-
-    UI --> State
-    State --> Auth
-    State --> DB
-    State --> Realtime
-    State --> Storage
-    State --> PayHere
-    State --> Maps
-    ML --> State
-    SecStore --> State
-    DB --- RLS
-    DB --- RPC
-```
+**Circl** is a Flutter mobile application built for Sri Lanka to power peer-to-peer resource sharing, tool borrowing, community micro-tasks, and neighbor-to-neighbor services. Designed to foster collaborative consumption and trust within neighborhoods, Circl replaces informal borrowing and manual tracking with escrow payments, biometric security, on-device OCR identity verification, and interactive map discovery.
 
 ---
 
 ## Core Features
 
-### 1. Hyper-Local Discovery & Dynamic Proximity
-* **Interactive Map Exploration:** Browse active borrow requests, rental listings, and community tasks with real-time radius filtering (1 km – 20 km) powered by Google Maps.
-* **Geofenced Feeds:** Location-aware request feed displaying items nearest to the user using device GPS.
-
-### 2. Multi-Tier Resource Sharing
-* **Free Borrowing:** Lend and borrow household items, textbooks, and appliances for zero cost.
-* **Paid Equipment Rentals:** Rent power tools, cameras, and equipment with automated daily/weekly price calculations.
-* **Community Tasks & Services:** Request physical assistance, pet care, or neighborhood chores with custom compensation.
-
-### 3. Trust, Security & Identity Verification
-* **On-Device OCR NIC Scanning:** Machine learning text recognition via Google ML Kit to parse Sri Lankan National Identity Cards.
-* **Salted SHA-512 Hashing:** National Identity Card numbers are never stored in plaintext—only irreversible cryptographic hashes are verified against duplicate fraud.
-* **Biometric App Lock:** Fingerprint and Face Unlock security integrated via `local_auth` and hardware keychains via `flutter_secure_storage`.
-
-### 4. Escrow Financial Engine & PayHere Integration
-* **Two-Phase Payment Escrow:** Borrower funds (Rental Fee + Security Deposit + 5% Platform Fee) are pre-authorized and securely held in escrow via PayHere during active rentals.
-* **Automatic Split & Deposit Refund:** Upon safe item return, the deposit is instantly credited back to the borrower's wallet, and provider earnings are transferred.
-* **Double-Entry Ledger:** Full transaction audit trail (`ledger_entries`) guaranteeing financial consistency.
-
-### 5. Real-Time Chat & Handover Timeline
-* **PostgreSQL Realtime Channels:** Instant messaging and status broadcasts between borrowers and lenders.
-* **Transaction Milestone Tracker:** Step-by-step transaction timeline from negotiation and payment hold to item dispatch, handoff, and return.
-
-### 6. Gamification & Community Governance
-* **Aura Points System:** Tiered reputation levels (Bronze, Silver, Gold, Platinum) earned through successful returns and positive community reviews.
-* **Peer Reviews & Ratings:** 5-star rating system with verified transaction badges.
-* **Admin Dispute & Moderation Center:** Complete administrative workflow to audit disputed returns, inspect proof documentation, and enforce account actions.
+- **Interactive Map Discovery:** Browse and locate nearby item requests, equipment rentals, and community tasks with real-time radius filtering via Google Maps.
+- **Multi-Tier Resource Sharing:** Supports free household item borrowing, paid equipment rentals with duration calculators, and community micro-tasks.
+- **On-Device OCR NIC Scanning:** Fast, automated Sri Lankan National Identity Card text extraction powered by Google ML Kit.
+- **Salted SHA-512 Privacy Hashing:** Identity numbers are never stored in plaintext—only non-reversible cryptographic hashes prevent duplicate accounts.
+- **PayHere Escrow Protection:** Pre-authorizes and securely holds borrower funds (rental fee, deposit, 5% platform fee) until items are safely returned.
+- **In-App Wallet & Double-Entry Ledger:** Automated instant deposit refunds and provider earnings tracking with atomic balance synchronization.
+- **Real-Time Chat & Milestone Tracking:** Live messaging via Supabase Realtime channels with status updates from negotiation to return.
+- **Biometric Security:** Hardware-backed fingerprint and Face Unlock protection via `local_auth` and `flutter_secure_storage`.
+- **Aura Reputation & Peer Reviews:** Tiered community credibility levels (Bronze, Silver, Gold, Platinum) with double-blind 5-star ratings.
+- **Admin Dispute & Moderation Center:** Comprehensive administrative workflow to resolve return disputes, inspect evidence, and manage reports.
 
 ---
 
@@ -119,7 +62,7 @@ The backend runs on Supabase (PostgreSQL 15+) with strict Row-Level Security (RL
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/YourUsername/Circl.git
+git clone https://github.com/AsfaThahani/Circl.git
 cd Circl
 ```
 
