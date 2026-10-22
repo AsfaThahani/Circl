@@ -21,7 +21,7 @@
 - **In-App Wallet & Double-Entry Ledger:** Automated instant deposit refunds and provider earnings tracking with atomic balance synchronization.
 - **Real-Time Chat & Milestone Tracking:** Live messaging via Supabase Realtime channels with status updates from negotiation to return.
 - **Biometric Security:** Hardware-backed fingerprint and Face Unlock protection via `local_auth` and `flutter_secure_storage`.
-- **Aura Reputation & Peer Reviews:** Tiered community credibility levels (Bronze, Silver, Gold, Platinum) with double-blind 5-star ratings.
+- **Aura Reputation & Peer Reviews:** Tiered community credibility levels (Bronze, Silver, Gold, Platinum) with 5-star ratings.
 - **Admin Dispute & Moderation Center:** Comprehensive administrative workflow to resolve return disputes, inspect evidence, and manage reports.
 
 ---
