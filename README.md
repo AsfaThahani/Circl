@@ -202,4 +202,6 @@ flutter build apk --release --dart-define-from-file=.env
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+Copyright © 2026 Asfa Thahani. All Rights Reserved.
+
+This project is proprietary and confidential. Published strictly for personal portfolio demonstration and recruitment evaluation. Unauthorized commercial use, reproduction, modification, or redistribution is strictly prohibited. See [LICENSE](LICENSE) for full legal terms.
